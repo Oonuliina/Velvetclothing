@@ -1,10 +1,9 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native'
 import React, { useContext, useLayoutEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import TopNavigation from '../components/TopNavigation'
 import Footer from '../components/Footer'
-import { ScrollView } from 'react-native-gesture-handler'
 import Product from '../components/Product'
 import { getProducts } from '../Firebase/producs'
 import ProductContext from '../Firebase/Context/productContext'
@@ -27,7 +26,7 @@ const ProductsScreen = () => {
 
 
   return (
-    <SafeAreaView className="bg-white">
+    <SafeAreaView className="bg-white flex-1">
       <TopNavigation />
       <Text className="mb-3 ml-3 text-lg">ALL PRODUCTS</Text>
       <ScrollView className="">
@@ -44,7 +43,6 @@ const ProductsScreen = () => {
           </TouchableOpacity>  
           )}
         </View>
-         <Footer />
       </ScrollView>     
     </SafeAreaView>
   )

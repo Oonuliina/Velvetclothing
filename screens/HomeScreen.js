@@ -7,11 +7,13 @@ import springsale2 from "../assets/Springsale2.png"
 import TopNavigation from "../components/TopNavigation"
 import Footer from "../components/Footer"
 import AuthContext from '../Firebase/Context/authContext'
+import { Bars3Icon, UserIcon, ShoppingBagIcon } from 'react-native-heroicons/outline'
+import { useFonts } from 'expo-font'
+import { faUniversalAccess } from '@fortawesome/free-solid-svg-icons'
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
+
   const {currentUser} = useContext(AuthContext)
-
-  const navigation = useNavigation()
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -20,12 +22,16 @@ const HomeScreen = () => {
   }, [])
 
   return (
-      <SafeAreaView className="bg-white">
+      <SafeAreaView edges={['top', 'left', 'right']} className="bg-white">
         <TopNavigation />
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator="false">
           <View>
+          <View>
+            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+              </TouchableOpacity>  
+            </View>
             <View>
-              <Text className="text-lg mx-5 mb-2"> {currentUser?.name}</Text>
+              <Text className="text-lg mx-5 mb-2"></Text>
             </View>
             <TouchableOpacity onPress={() => navigation.navigate("NEW IN")}>
               <Image source={newIn} className="mb-4" />
@@ -34,7 +40,6 @@ const HomeScreen = () => {
               <Image source={springsale2} className="mb-4" />
             </TouchableOpacity>
           </View>
-        <Footer />
         </ScrollView>
       </SafeAreaView>
   )

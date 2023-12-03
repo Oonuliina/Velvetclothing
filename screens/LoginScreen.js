@@ -30,6 +30,7 @@ const LoginScreen = () => {
                 duration: Toast.durations.LONG,
                 position: Toast.positions.TOP,
               })
+            navigation.navigate("Home")
         }
     }
 

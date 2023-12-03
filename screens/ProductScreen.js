@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native'
+import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import { async } from '@firebase/util'
 import { getProductById } from '../Firebase/producs'
@@ -6,42 +6,33 @@ import ProductContext from '../Firebase/Context/productContext'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import TopNavigation from '../components/TopNavigation'
 import Footer from '../components/Footer'
-import { ScrollView } from 'react-native-gesture-handler'
 import { addToBag } from '../Firebase/bag'
 import BagContext from '../Firebase/Context/bagContext'
+import { Feather } from '@expo/vector-icons';
 
 const ProductScreen = ({navigation, route}) => {
-    const {currentProduct: product, setCurrentProduct} = useContext(ProductContext)
-    const {setBagItems} = useContext(BagContext)
-    const [qty, setQty] = useState(1)
-    const id = route.params.productId
+    const {currentProduct: product, setCurrentProduct} = useContext(ProductContext);
+    const {setBagItems}=useContext(BagContext) 
+    const id = route.params.productId;
 
+    const [qty,setQty] = useState(1);
 
-    const addItemToBag = async(id) => {
-        const res = await addToBag(id, qty)
-        if(res.success === true) {
-            console.log("Jee tuotteet kärryssä")
-            setBagItems(res.data)
-        } else {
-            console.log("wtf")
-        }
-    }
     const increment = () => {
         setQty(prev => prev + 1)
     }
-
     const decrement = () => {
         if(qty > 1) {
-            setQty(prev => prev - 1)
+        setQty( prev => prev - 1)
         }
     }
 
-    useEffect(() => {
-        navigation.setOptions({
-            headerShown: false,
-        })
-        
-    },[])
+    const addItemToBag = async() => {
+        const res = await addToBag(id,qty)
+        if(res.success===true){
+        /* ToastAndroid.show("item added to bag",ToastAndroid.BOTTOM) */
+        setBagItems(res.data)
+        }
+    }
 
     const fetchProductById = async(id) => {
         const result = await getProductById(id)
@@ -52,9 +43,21 @@ const ProductScreen = ({navigation, route}) => {
         fetchProductById(id)
     },[id])
 
+    useEffect(() => {
+        navigation.setOptions({
+            headerShown: false,
+        })
+        
+    },[])
+
   return (
-    <SafeAreaView className="bg-white">
-        <TopNavigation />
+    <SafeAreaView className="bg-white flex-1">
+        <View>
+          <TouchableOpacity className="flex-row m-3" onPress={() => navigation.goBack()}>
+            <Feather name="chevron-left" size={30} color="black" />
+            <Text className="text-lg">BACK TO ALL PRODUCTS</Text>
+          </TouchableOpacity>
+        </View>
         <ScrollView>
             <Image source={{uri: product?.prodImage}} width={400} height={500} />
             <View className="flex-row m-5 ">
@@ -83,7 +86,6 @@ const ProductScreen = ({navigation, route}) => {
                    {product?.prodDescription}
                 </Text>
             </View>
-            <Footer />
         </ScrollView>
     </SafeAreaView>
   )
