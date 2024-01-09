@@ -3,9 +3,8 @@ import React, { useContext, useLayoutEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import TopNavigation from '../components/TopNavigation'
-import Footer from '../components/Footer'
 import Product from '../components/Product'
-import { getProducts } from '../Firebase/producs'
+import { getProducts } from '../Firebase/products'
 import ProductContext from '../Firebase/Context/productContext'
 
 const ProductsScreen = () => {

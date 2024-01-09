@@ -1,11 +1,10 @@
 import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import { async } from '@firebase/util'
-import { getProductById } from '../Firebase/producs'
+import { getProductById } from '../Firebase/products'
 import ProductContext from '../Firebase/Context/productContext'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import TopNavigation from '../components/TopNavigation'
-import Footer from '../components/Footer'
 import { addToBag } from '../Firebase/bag'
 import BagContext from '../Firebase/Context/bagContext'
 import { Feather } from '@expo/vector-icons';

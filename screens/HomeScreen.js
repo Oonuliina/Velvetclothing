@@ -5,7 +5,6 @@ import React, { useLayoutEffect , useContext }  from 'react'
 import newIn from "../assets/newIn.png"
 import springsale2 from "../assets/Springsale2.png"
 import TopNavigation from "../components/TopNavigation"
-import Footer from "../components/Footer"
 import AuthContext from '../Firebase/Context/authContext'
 import { Bars3Icon, UserIcon, ShoppingBagIcon } from 'react-native-heroicons/outline'
 import { useFonts } from 'expo-font'

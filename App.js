@@ -19,16 +19,16 @@ export default function App() {
 
   return (
     <RootSiblingParent>
-    <AuthProvider value={{isLoggedIn, setIsLoggedIn, currentUser, setCurrentUser}}>
-    <ProductProvider value={{products, setProducts, currentProduct, setCurrentProduct}}>
-      <BagProvider value={{bagItems, setBagItems}}>
-    <NavigationContainer>
-      <StatusBar style="dark" />
-      <DrawerNavigation />
-    </NavigationContainer>
-    </BagProvider>
-    </ProductProvider>
-    </AuthProvider>
+      <AuthProvider value={{isLoggedIn, setIsLoggedIn, currentUser, setCurrentUser}}>
+        <ProductProvider value={{products, setProducts, currentProduct, setCurrentProduct}}>
+          <BagProvider value={{bagItems, setBagItems}}>
+            <NavigationContainer>
+              <StatusBar style="dark" />
+              <DrawerNavigation />
+            </NavigationContainer>
+        </BagProvider>
+        </ProductProvider>
+      </AuthProvider>
     </RootSiblingParent>
   );
 }

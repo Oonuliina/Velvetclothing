@@ -17,7 +17,6 @@ import Accessories from '../screens/navigationScreens/AccessoriesScreen'
 import LoginScreen from '../screens/LoginScreen';
 import Shopping from '../screens/ShoppingBagScreen'
 import ProductScreen from '../screens/ProductScreen';
-import TabNavigation from './TabNavigation';
 import ShoppingBagScreen from '../screens/ShoppingBagScreen';
 
 const Drawer = createDrawerNavigator();
